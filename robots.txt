@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /   # Bloqueia todas as páginas do site
+Allow: /$      # Permite apenas a página inicial
