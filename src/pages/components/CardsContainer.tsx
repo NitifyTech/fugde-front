@@ -6,7 +6,7 @@ export interface IMountCard {
     redirectLink?: string;
     cardTitle: string;
     cardDescription: string,
-    publishedDate: string;
+    createdAt: string;
     imageLink?: string;
 }
 
@@ -16,12 +16,12 @@ export interface ICardsContainer {
     cardsList: IMountCard[]
 }
 
-function mountCard({ cardTitle, id, publishedDate, registryType, redirectLink, imageLink, cardDescription }: IMountCard, key: number) {
+function mountCard({ cardTitle, id, createdAt, registryType, redirectLink, imageLink, cardDescription }: IMountCard, key: number) {
     const link = redirectLink ?? `${registryType}/${id}`
     return (
-        <div className="shadow-md hover:shadow-lg" key={key}>
+        <div className="shadow-md hover:shadow-lg rounded-md" key={key}>
             {imageLink && <a href={link}>
-                <img src={imageLink} className="object-cover w-full h-56 mb-5 bg-center rounded" loading="lazy" />
+                <img src={imageLink} className="object-cover w-full h-56 mb-5 bg-center rounded rounded-md" loading="lazy" />
             </a>}
             <h2 className="mb-2 text-lg font-semibold text-gray-900">
                 <a href={link} className="text-gray-900 hover:text-purple-700">{cardTitle}</a>
@@ -30,7 +30,7 @@ function mountCard({ cardTitle, id, publishedDate, registryType, redirectLink, i
                 {cardDescription}
             </p>}
             <p className="mb-3 text-sm font-normal text-gray-500">
-                {new Date(publishedDate).toLocaleDateString('pt-BR')}
+                {new Date(createdAt).toLocaleDateString('pt-BR')}
             </p>
         </div>
     )
