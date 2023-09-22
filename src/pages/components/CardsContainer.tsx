@@ -41,9 +41,9 @@ export default function CardsContainer({ shortDescription, title, cardsList }: I
         <section className="px-4 py-8 mx-auto max-w-7xl">
             {title && <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">{title}</h2>}
             {shortDescription && <p className="mb-20 text-lg text-gray-500">{shortDescription}</p>}
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
-                {cardsList && cardsList.map((card, idx) => mountCard(card, idx))}
-            </div>
+            {cardsList && <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
+                {cardsList.map((card, idx) => mountCard(card, idx))}
+            </div>}
         </section>
     )
 }
