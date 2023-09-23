@@ -3,7 +3,6 @@ import React, { useEffect } from "react"
 import { useState } from 'react'
 import CallAction, { ICallToAction } from '@/pages/components/CallToAction'
 import CardsContainer, { ICardsContainer } from '@/pages/components/CardsContainer'
-import { ChartsContainer } from '@/pages/components/ChartsContainer'
 interface CallAction {
     id: string;
     callActionMessage: string;
