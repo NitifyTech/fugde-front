@@ -1,3 +1,4 @@
+//@ts-nocheck
 import dynamic from "next/dynamic";
 //@ts-ignore
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });

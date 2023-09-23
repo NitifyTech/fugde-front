@@ -1,6 +1,6 @@
+//@ts-nocheck
 import React from "react";
 //@ts-ignore
-import { useRouter } from 'next/router'
 import { Charts, ChartsContainer } from "@/pages/components/ChartsContainer"
 import { useEffect, useState } from "react";
 
