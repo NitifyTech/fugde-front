@@ -26,8 +26,8 @@ export function ChartsContainer({ chartsList }: DTO = { chartsList: [] }) {
     return (
         <>
             <div>
-                {chartsList.length > 0 && chartsList.map((chart) => {
-                    return (<Chart {...chart} />)
+                {chartsList.length > 0 && chartsList.map((chart, idx) => {
+                    return (<Chart key={idx} {...chart} />)
                 })}
             </div>
         </>
