@@ -1,6 +1,5 @@
 import React from "react";
 import dynamic from "next/dynamic";
-//@ts-ignore
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export interface Charts {
@@ -21,7 +20,6 @@ export function Chart(data: Charts) {
         <ApexChart {...data} />
     )
 }
-
 
 export default function ChartsContainer({ chartsList }: DTO = { chartsList: [] }) {
     return (

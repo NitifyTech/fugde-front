@@ -6,7 +6,7 @@ export interface ICallToAction {
     callActionMessage: string;
 }
 
-export default function CallToAction({ callActionMessage, shortMessage }: ICallToAction) {
+export function CallAction({ callActionMessage, shortMessage }: ICallToAction) {
     return (
         <section className="px-4 py-20 bg-gradient-to-r from-white to-purple-100">
             <div className="w-full h-full grid items-center grid-cols-1 gap-4 mx-auto max-w-7xl lg:grid-cols-2 xl:grid-cols-3">

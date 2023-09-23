@@ -37,7 +37,7 @@ function mountCard({ cardTitle, id, createdAt, registryType, redirectLink, image
     )
 }
 
-export default function CardsContainer({ shortDescription, title, cardsList }: ICardsContainer) {
+export function CardsContainer({ shortDescription, title, cardsList }: ICardsContainer) {
     return (
         <section className="px-4 py-8 mx-auto max-w-7xl">
             {title && <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">{title}</h2>}

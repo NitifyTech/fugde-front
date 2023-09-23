@@ -2,5 +2,7 @@ import '@/styles/global.css'
 import React from "react";
 
 export default function Home({ Component, pageProps }: any) {
-    return <Component {...pageProps} />
+    return (
+        <Component {...pageProps} />
+    )
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 
 import { useState } from 'react'
-import CallAction, { ICallToAction } from '@/pages/components/CallToAction'
-import CardsContainer, { ICardsContainer } from '@/pages/components/CardsContainer'
+import { ICallToAction, CallAction } from '@/components/CallToAction'
+import { ICardsContainer, CardsContainer } from '@/components/CardsContainer'
 interface CallAction {
     id: string;
     callActionMessage: string;

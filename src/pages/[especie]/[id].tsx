@@ -1,7 +1,7 @@
 //@ts-nocheck
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 //@ts-ignore
-import ChartsContainer, { Charts } from "@/pages/components/ChartsContainer"
+import ChartsContainer, { Charts } from "@/components/ChartsContainer"
 
 interface ICharts {
     shortDescription: string
@@ -9,46 +9,53 @@ interface ICharts {
     chartsList: Charts[]
 }
 
+export default function EspecieDetails(data: ICharts) {
+    console.log("🚀 ~ file: [id].tsx:12 ~ EspecieDetails ~ data:", data)
 
 
-export default function TemplateCharts({ chartsList, shortDescription, title }: ICharts) {
     const [cardsContainerData, setCardsContainerData] = useState<ICharts>({
         shortDescription: "Aguarde enquanto processamos vossa solicitação",
         title: "Isso levará alguns segundos",
         chartsList: []
     })
-
     useEffect(() => {
-        if (chartsList && shortDescription && title) setCardsContainerData({ chartsList, shortDescription, title })
+
+        if (data) setCardsContainerData(data)
+
     }, [])
 
-    return (<>
-        <section className="px-4 py-20 bg-gradient-to-r from-white to-purple-100">
-            <div className="w-full h-full grid items-center grid-cols-1 gap-4 mx-auto max-w-7xl lg:grid-cols-2 xl:grid-cols-3">
-                <div>
-                    <p className="mb-1 text-base font-medium md:text-xl text-primary">{cardsContainerData.shortDescription}</p>
-                    <p className="mb-6 text-3xl font-bold md:leading-tight md:text-x">{cardsContainerData.title}</p>
+    return (
+        <>
+            <section className="px-4 py-20 bg-gradient-to-r from-white to-purple-100">
+                <div className="w-full h-full grid items-center grid-cols-1 gap-4 mx-auto max-w-7xl lg:grid-cols-2 xl:grid-cols-3">
+                    <div>
+                        <p className="mb-1 text-base font-medium md:text-xl text-primary">{cardsContainerData.shortDescription}</p>
+                        <p className="mb-6 text-3xl font-bold md:leading-tight md:text-x">{cardsContainerData.title}</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section>
-            {cardsContainerData?.chartsList > 0 && <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
-                <ChartsContainer chartsList={cardsContainerData?.chartsList ?? []} />
-            </div>}
-        </section>
-    </>
+            </section><section>
+                {cardsContainerData?.chartsList > 0 && <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
+                    <ChartsContainer chartsList={cardsContainerData?.chartsList ?? []} />
+                </div>}
+            </section>
+        </>
     )
 }
 
 export async function getServerSideProps(context: any) {
     try {
-        const { especie, id } = context.query;
+        const { id, especie } = context.query
         const result = await fetch(`https://api.pureitems.dev/v1/especies/${id}/${especie}`)
-        const props = await result.json() as ICharts
-        return { props }
+        const props = await result.json() as HomePage
+        if ("erro" in props) {
+            return { props: {} }
+        }
+
+        return {
+            props
+        }
     } catch (e) {
         console.log("🚀 ~ file: index.tsx:49 ~ getServerSideProps ~ e:", e)
         return { props: {} }
     }
 }
-
