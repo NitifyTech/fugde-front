@@ -1,7 +1,7 @@
 //@ts-nocheck
 import React from "react";
 //@ts-ignore
-import { Charts, ChartsContainer } from "@/pages/components/ChartsContainer"
+import ChartsContainer, { Charts, } from "@/pages/components/ChartsContainer"
 import { useEffect, useState } from "react";
 
 
