@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React from "react";
 import dynamic from "next/dynamic";
 //@ts-ignore
@@ -18,6 +17,7 @@ interface DTO {
 
 export function Chart(data: Charts) {
     return (
+        //@ts-ignore
         <ApexChart {...data} />
     )
 }
@@ -27,7 +27,7 @@ export default function ChartsContainer({ chartsList }: DTO = { chartsList: [] }
     return (
         <>
             <div>
-                {chartsList.length > 0 && chartsList.map((chart, idx) => {
+                {chartsList?.length > 0 && chartsList.map((chart, idx) => {
                     return (<Chart key={idx} {...chart} />)
                 })}
             </div>

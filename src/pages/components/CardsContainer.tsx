@@ -22,7 +22,7 @@ function mountCard({ cardTitle, id, createdAt, registryType, redirectLink, image
     return (
         <div className="shadow-md hover:shadow-lg rounded-md" key={key}>
             {imageLink && <a href={link}>
-                <img src={imageLink} className="object-cover w-full h-56 mb-5 bg-center rounded rounded-md" loading="lazy" />
+                <img src={imageLink} className="object-cover w-full h-56 mb-5 bg-center rounded rounded-md" alt="" loading="lazy" />
             </a>}
             <h2 className="mb-2 text-lg font-semibold text-gray-900">
                 <a href={link} className="text-gray-900 hover:text-purple-700">{cardTitle}</a>

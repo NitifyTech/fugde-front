@@ -1,9 +1,7 @@
 //@ts-nocheck
-import React from "react";
+import React, { useEffect, useState } from "react";
 //@ts-ignore
-import ChartsContainer, { Charts, } from "@/pages/components/ChartsContainer"
-import { useEffect, useState } from "react";
-
+import ChartsContainer, { Charts } from "@/pages/components/ChartsContainer"
 
 interface ICharts {
     shortDescription: string
@@ -13,7 +11,7 @@ interface ICharts {
 
 
 
-export default function TemplateCharts(data: ICharts) {
+export default function TemplateCharts({ chartsList, shortDescription, title }: ICharts) {
     const [cardsContainerData, setCardsContainerData] = useState<ICharts>({
         shortDescription: "Aguarde enquanto processamos vossa solicitação",
         title: "Isso levará alguns segundos",
@@ -21,7 +19,7 @@ export default function TemplateCharts(data: ICharts) {
     })
 
     useEffect(() => {
-        if (data) setCardsContainerData(data)
+        if (chartsList && shortDescription && title) setCardsContainerData({ chartsList, shortDescription, title })
     }, [])
 
     return (<>
@@ -34,9 +32,9 @@ export default function TemplateCharts(data: ICharts) {
             </div>
         </section>
         <section>
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
-                <ChartsContainer chartsList={cardsContainerData.chartsList} />
-            </div>
+            {cardsContainerData?.chartsList > 0 && <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
+                <ChartsContainer chartsList={cardsContainerData?.chartsList ?? []} />
+            </div>}
         </section>
     </>
     )
