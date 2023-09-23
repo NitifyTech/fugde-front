@@ -23,7 +23,7 @@ export function Chart(data: Charts) {
 }
 
 
-export function ChartsContainer({ chartsList }: DTO = { chartsList: [] }) {
+export default function ChartsContainer({ chartsList }: DTO = { chartsList: [] }) {
     return (
         <>
             <div>
