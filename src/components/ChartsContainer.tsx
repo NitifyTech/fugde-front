@@ -25,7 +25,9 @@ export default function ChartsContainer({ chartsList }: DTO = { chartsList: [] }
     return (
         <>
             <div>
-                {chartsList?.length > 0 && chartsList.map((chart, idx) => {
+                {chartsList.map((chart, idx) => {
+                    console.log("🚀 ~ file: ChartsContainer.tsx:31 ~ {chartsList?.length>0&&chartsList.map ~ chart:", chart)
+
                     return (<Chart key={idx} {...chart} />)
                 })}
             </div>

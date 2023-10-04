@@ -10,18 +10,14 @@ interface ICharts {
 }
 
 export default function EspecieDetails(data: ICharts) {
-    console.log("🚀 ~ file: [id].tsx:12 ~ EspecieDetails ~ data:", data)
-
-
     const [cardsContainerData, setCardsContainerData] = useState<ICharts>({
         shortDescription: "Aguarde enquanto processamos vossa solicitação",
         title: "Isso levará alguns segundos",
         chartsList: []
     })
+    console.log("🚀 ~ file: [id].tsx:18 ~ EspecieDetails ~ cardsContainerData:", cardsContainerData)
     useEffect(() => {
-
         if (data) setCardsContainerData(data)
-
     }, [])
 
     return (
@@ -34,9 +30,9 @@ export default function EspecieDetails(data: ICharts) {
                     </div>
                 </div>
             </section><section>
-                {cardsContainerData?.chartsList > 0 && <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2  ">
                     <ChartsContainer chartsList={cardsContainerData?.chartsList ?? []} />
-                </div>}
+                </div>
             </section>
         </>
     )
@@ -55,7 +51,6 @@ export async function getServerSideProps(context: any) {
             props
         }
     } catch (e) {
-        console.log("🚀 ~ file: index.tsx:49 ~ getServerSideProps ~ e:", e)
         return { props: {} }
     }
 }
